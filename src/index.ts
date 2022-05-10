@@ -1,7 +1,7 @@
-import d from 'dotenv';
+import dotenv from 'dotenv';
 import { Telegraf } from 'telegraf';
 
-const c = d.config();
+dotenv.config();
 
 function getBotAccessToken(): string {
   const botAccessToken = process.env.BOT_TOKEN;
@@ -17,7 +17,7 @@ const bot = new Telegraf(getBotAccessToken());
 bot.start((ctx) => ctx.reply('Welcome'));
 bot.help((ctx) => ctx.reply('Send me a sticker'));
 bot.on('sticker', (ctx) => ctx.reply('👍'));
-bot.hears('hi', (ctx) => ctx.reply('Hey there'));
+bot.hears('hi', (ctx) => ctx.reply('Ну приветики...'));
 bot.launch();
 
 // Enable graceful stop
