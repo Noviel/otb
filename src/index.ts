@@ -17,7 +17,22 @@ const bot = new Telegraf(getBotAccessToken());
 bot.start((ctx) => ctx.reply('Welcome'));
 bot.help((ctx) => ctx.reply('Send me a sticker'));
 bot.on('sticker', (ctx) => ctx.reply('👍'));
-bot.hears('hi', (ctx) => ctx.reply('Ну приветики...'));
+bot.hears(['site', 'сайт'], (ctx) =>
+  ctx.reply('Кликни по кнопке ниже', {
+    reply_markup: {
+      inline_keyboard: [
+        [
+          {
+            text: 'snov.digital',
+            web_app: {
+              url: 'https://snov.digital/ru/demo/graphics',
+            },
+          },
+        ],
+      ],
+    },
+  })
+);
 bot.launch();
 
 // Enable graceful stop
